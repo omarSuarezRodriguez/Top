@@ -6,7 +6,7 @@ public class Artista {
 
     private long id;
     private String nombre;
-    private String apellidos;
+    private String apellidos;//g
     private long fechaNacimiento;
     private String lugarNacimiento;
     private short estatura;
