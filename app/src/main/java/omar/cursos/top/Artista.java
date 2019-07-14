@@ -105,6 +105,10 @@ public class Artista {
         this.fotoUrl = fotoUrl;
     }
 
+    public String getNombreCompleto() {
+        return this.nombre + " " + this.apellidos;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -117,4 +121,7 @@ public class Artista {
     public int hashCode() {
         return (int) (id ^(id >>> 32));
     }
+
+
+
 }
