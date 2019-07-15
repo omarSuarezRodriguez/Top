@@ -2,6 +2,7 @@ package omar.cursos.top;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -45,6 +50,22 @@ public class ArtistaAdapter extends RecyclerView.Adapter<ArtistaAdapter.ViewHold
 
         holder.tvNombre.setText(artista.getNombreCompleto());
         holder.tvOrden.setText(String.valueOf(artista.getOrden()));
+
+
+        if (artista.getFotoUrl() != null) {
+
+            RequestOptions options = new RequestOptions();
+            options.diskCacheStrategy(DiskCacheStrategy.ALL);
+            options.centerCrop();
+            options.placeholder(R.drawable.ic_sentiment_satisfied);
+
+            Glide.with(context)
+                    .load(artista.getFotoUrl())
+                    .apply(options)
+                    .into(holder.imgFoto);
+        } else {
+            holder.imgFoto.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_account_box));
+        }
 
     }
 
