@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -131,12 +130,11 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     }
 
 
-
     @OnClick(R.id.fab)
     public void addArtist() {
         Intent intent = new Intent(MainActivity.this, AddArtistActivity.class);
         intent.putExtra(Artista.ORDEN, adapter.getItemCount() + 1);
-        startActivity(intent);
+        //startActivity(intent);
         startActivityForResult(intent, 1);
     }
 
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
         setResult(RESULT_OK);
         super.onBackPressed();
     }
-
 
 
 }

@@ -13,7 +13,13 @@ public class AddArtistActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-
-
     }
+
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        super.onBackPressed();
+    }
+
 }
