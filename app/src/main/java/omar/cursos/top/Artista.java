@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Artista {
 
+    public static final String ORDEN = "orden";
+
     private long id;
     private String nombre;
     private String apellidos;

@@ -1,5 +1,6 @@
 package omar.cursos.top;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements OnItemClickListener {
 
@@ -116,4 +118,37 @@ public class MainActivity extends AppCompatActivity implements OnItemClickListen
     public void onLongItemClick(Artista artista) {
 
     }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK && requestCode == 1) {
+
+        }
+    }
+
+
+
+    @OnClick(R.id.fab)
+    public void addArtist() {
+        Intent intent = new Intent(MainActivity.this, AddArtistActivity.class);
+        intent.putExtra(Artista.ORDEN, adapter.getItemCount() + 1);
+        startActivity(intent);
+        startActivityForResult(intent, 1);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_OK);
+        super.onBackPressed();
+    }
+
+
+
 }
+
+
