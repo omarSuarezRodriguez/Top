@@ -101,6 +101,7 @@
                     android:id="@+id/etFechaNacimiento"
                     android:layout_width="match_parent"
                     android:hint="@string/artist_hint_fechaNacimiento"
+                    android:focusableInTouchMode="false"
                     android:layout_height="wrap_content" />
 
             </android.support.design.widget.TextInputLayout>
