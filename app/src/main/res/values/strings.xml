@@ -8,4 +8,7 @@
     <string name="artist_hint_estatura">Estatura(cm)</string>
     <string name="artist_hint_lugarNacimiento">Lugar de nacimiento</string>
     <string name="artist_hint_notas">Notas</string>
+    <string name="addArtist_dialogUrl_title">Añadir desde una Url</string>
+    <string name="Label_dialog_add">Añadir</string>
+    <string name="label_dialog_cancel">Cancelar</string>
 </resources>

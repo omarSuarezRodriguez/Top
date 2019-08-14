@@ -1,14 +1,23 @@
 package omar.cursos.top;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -113,4 +122,72 @@ public class AddArtistActivity extends AppCompatActivity implements DatePickerDi
 
 
     }
+
+    @OnClick({R.id.imgDeleteFoto, R.id.imgFromGallery, R.id.imgFromUrl})
+    public void imageEvents(View view) {
+        switch (view.getId()) {
+            case R.id.imgDeleteFoto:
+                break;
+            case R.id.imgFromGallery:
+                break;
+            case R.id.imgFromUrl:
+                showAddPhotoDialog();
+
+                break;
+        }
+    }
+
+    private void showAddPhotoDialog() {
+
+        final EditText etFotoUrl = new EditText(this);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle(R.string.addArtist_dialogUrl_title)
+                .setPositiveButton(R.string.Label_dialog_add, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        configImageView(etFotoUrl.getText().toString().trim());
+                    }
+                })
+                .setNegativeButton(R.string.label_dialog_cancel, null);
+
+        builder.setView(etFotoUrl);
+        builder.show();
+
+    }
+
+    private void configImageView(String fotoUrl) {
+
+        if (fotoUrl != null) {
+            RequestOptions options = new RequestOptions();
+            options.diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .centerCrop();
+            Glide.with(this)
+                    .load(fotoUrl)
+                    .apply(options)
+                    .into(imgFoto);
+        } else {
+            imgFoto.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_photo_size_select_actual));
+        }
+
+        mArtista.setFotoUrl(fotoUrl);
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
